@@ -9,7 +9,7 @@ export default class App extends React.Component {
     try {
       const response = await fetch(`http://ergast.com/api/f1/${year}.json`)
       const responseJson = await response.json()
-      console.log(responseJson)
+      console.log(responseJson.MRData.RaceTable.Races)
     } catch{
       console.log('Deu 01 ruim')
     }
