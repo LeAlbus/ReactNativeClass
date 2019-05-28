@@ -13,7 +13,7 @@ export default class Seasons extends PureComponent {
 
                 <Button full onPress={() => this.props.handleClick(year)}
                     key={`season-${i}`}>
-                    <Text style={styles.container}>
+                    <Text>
                         {year}
                     </Text>
                 </Button>
