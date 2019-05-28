@@ -1,7 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 import Seasons from '../../components/Seasons/Index'
+import { SafeAreaView, ScrollView } from 'react-navigation';
 
 export default class HomeScreen extends React.Component {
 
@@ -22,10 +23,12 @@ export default class HomeScreen extends React.Component {
 
     render() {
         return (
-            <View style={styles.container}>
+            <SafeAreaView style={styles.container}>
+
                 <Seasons handleClick={this.redirectTo} />
                 {/* HandleClick é uma variável que funciona como uma closure */}
-            </View>
+
+            </SafeAreaView>
 
         );
     }

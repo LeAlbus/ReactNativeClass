@@ -1,6 +1,6 @@
 import React, { PureComponent, Component } from 'react';
 import { View } from 'react-native';
-import { Container, Header, Content, Button, Text } from 'native-base';
+import { Container, Content, Button, Text } from 'native-base';
 
 export default class Seasons extends PureComponent {
 

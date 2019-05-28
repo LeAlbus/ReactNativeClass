@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView } from 'react-navigation';
+import { SafeAreaView, ScrollView } from 'react-navigation';
 import { Text, List, ListItem, Left, Right, Icon } from 'native-base';
 
 export default class DetailScreen extends React.Component {
@@ -34,21 +34,11 @@ export default class DetailScreen extends React.Component {
         }
     }
 
-    render() {
-        return (
-            <SafeAreaView>
-                <List>
-                    {this.renderRaceListItems()}
-                </List>
-            </SafeAreaView>
-        )
-    };
-
     renderRaceListItems() {
 
         let raceList = this.state.races;
         let listItems = [];
-
+        console.log(raceList.length)
         for (let i = 0; i < (raceList.length) - 1; i++) {
 
             listItems.push(
@@ -67,4 +57,16 @@ export default class DetailScreen extends React.Component {
 
         return listItems;
     }
+
+    render() {
+        return (
+            <SafeAreaView>
+                <ScrollView>
+                    <List>
+                        {this.renderRaceListItems()}
+                    </List>
+                </ScrollView>
+            </SafeAreaView>
+        )
+    };
 }
