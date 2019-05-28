@@ -1,36 +1,34 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 
-import Seasons from './components/Seasons/Index'
+import {
+  createStackNavigator,
+  createAppContainer,
+} from 'react-navigation';
 
-export default class App extends React.Component {
+import HomeScreen from './screens/home';
+import DetailsScreen from './screens/details';
 
-  async fetchFrom(year) {
-    try {
-      const response = await fetch(`http://ergast.com/api/f1/${year}.json`)
-      const responseJson = await response.json()
-      console.log(responseJson.MRData.RaceTable.Races)
-    } catch{
-      console.log('Deu 01 ruim')
+const AppNavigator = createStackNavigator(
+  {//Screens
+    Home: {
+      screen: HomeScreen,
+    },
+    Details: {
+      screen: DetailsScreen,
+    }
+  },
+  {//Configurations
+    initialRouteName: 'Home',
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: '#333',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      }
     }
   }
+);
 
-  render() {
-    return (
-      <View style={styles.container}>
-        <Seasons handleClick={this.fetchFrom} />
-        {/* HandleClick é uma variável que funciona como uma closure */}
-      </View>
-
-    );
-  }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default createAppContainer(AppNavigator);
