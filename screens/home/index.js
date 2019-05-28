@@ -24,10 +24,10 @@ export default class HomeScreen extends React.Component {
     render() {
         return (
             <SafeAreaView style={styles.container}>
-
-                <Seasons handleClick={this.redirectTo} />
-                {/* HandleClick é uma variável que funciona como uma closure */}
-
+                <ScrollView >
+                    <Seasons handleClick={this.redirectTo} />
+                    {/* HandleClick é uma variável que funciona como uma closure */}
+                </ScrollView>
             </SafeAreaView>
 
         );

@@ -1,6 +1,6 @@
 import React, { PureComponent, Component } from 'react';
-import { View } from 'react-native';
-import { Container, Content, Button, Text } from 'native-base';
+import { View, StyleSheet } from 'react-native';
+import { Button, Text } from 'native-base';
 
 export default class Seasons extends PureComponent {
 
@@ -10,15 +10,14 @@ export default class Seasons extends PureComponent {
         for (let i = 0; i < 20; i++) {
             const year = '20' + (i > 9 ? i : `0${i}`)
             items.push(
-                <Container key={`season-${i}`} >
-                    <Content>
-                        <Button onPress={() => this.props.handleClick(year)}>
-                            <Text>
-                                {year}
-                            </Text>
-                        </Button>
-                    </Content>
-                </Container>
+
+                <Button full onPress={() => this.props.handleClick(year)}
+                    key={`season-${i}`}>
+                    <Text style={styles.container}>
+                        {year}
+                    </Text>
+                </Button>
+
             )
         }
 
@@ -35,3 +34,9 @@ export default class Seasons extends PureComponent {
         )
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+    },
+});
