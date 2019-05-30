@@ -18,7 +18,7 @@ export default class HomeScreen extends React.Component {
     }
 
     redirectTo(year) {
-        this.props.navigation.navigate('Details', { year });
+        this.props.navigation.navigate('SeasonInfo', { year });
     }
 
     render() {

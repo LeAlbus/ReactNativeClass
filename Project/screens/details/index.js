@@ -8,17 +8,17 @@ export default class DetailScreen extends React.Component {
         races: [],
     };
 
+    static navigationOptions = () => {
+        return {
+            title: 'Races List',
+        }
+    }
+
     componentDidMount() {
         const year = this.props.navigation.getParam('year');
         console.log(year);
 
         this.fetchFrom(year)
-    }
-
-    static navigationOptions = () => {
-        return {
-            title: 'Details Screen',
-        }
     }
 
     async fetchFrom(year) {

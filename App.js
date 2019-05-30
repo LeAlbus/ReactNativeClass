@@ -5,13 +5,17 @@ import {
   createAppContainer,
 } from 'react-navigation';
 
-import HomeScreen from './screens/home';
-import DetailsScreen from './screens/details';
+import HomeScreen from './Project/screens/home';
+import SeasonInfo from './Project/screens/seasonInfo';
+import DetailsScreen from './Project/screens/details';
 
 const AppNavigator = createStackNavigator(
   {//Screens
     Home: {
       screen: HomeScreen,
+    },
+    SeasonInfo: {
+      screen: SeasonInfo
     },
     Details: {
       screen: DetailsScreen,
