@@ -9,12 +9,17 @@ export default class SeasonInfo extends React.Component {
         }
     }
 
+    componentDidMount() {
+        const year = this.props.navigation.getParam('year');
+        //this.fetchFrom(year)
+    }
+
     render() {
         return (
             <Container>
                 <View>
                     <Text>
-                        RIRIRIRRIR
+
                     </Text>
                 </View>
             </Container>

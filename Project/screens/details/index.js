@@ -1,6 +1,9 @@
 import React from 'react';
 import { SafeAreaView, ScrollView } from 'react-navigation';
 import { Text, List, ListItem, Left, Right, Icon } from 'native-base';
+import { StyleSheet } from 'react-native';
+
+import { debug } from 'util';
 
 export default class DetailScreen extends React.Component {
 
@@ -16,7 +19,6 @@ export default class DetailScreen extends React.Component {
 
     componentDidMount() {
         const year = this.props.navigation.getParam('year');
-        console.log(year);
 
         this.fetchFrom(year)
     }
@@ -30,19 +32,32 @@ export default class DetailScreen extends React.Component {
             this.setState({ races: raceList })
 
         } catch{
-            console.log('Deu 01 ruim')
+            console.log('Deu ruim')
         }
+    }
+
+    goToRaceDetails(race) {
+        console.log(race)
+        return "abreu"
     }
 
     renderRaceListItems() {
 
         let raceList = this.state.races;
         let listItems = [];
-        console.log(raceList.length)
+
+        if (raceList.length == 0) {
+            let loadingNote = (<Text style={styles.headerFont}>
+                Carregando informações...
+            </Text>)
+
+            return loadingNote
+        }
+
         for (let i = 0; i < (raceList.length) - 1; i++) {
 
             listItems.push(
-                <ListItem key={`race-${i}`}>
+                <ListItem key={`race-${i}`} button onPress={() => { this.goToRaceDetails(raceList[i]) }}>
                     <Left>
                         <Text>
                             {raceList[i].raceName}
@@ -59,6 +74,7 @@ export default class DetailScreen extends React.Component {
     }
 
     render() {
+
         return (
             <SafeAreaView>
                 <ScrollView>
@@ -70,3 +86,10 @@ export default class DetailScreen extends React.Component {
         )
     };
 }
+
+const styles = StyleSheet.create({
+    headerFont: {
+        fontSize: 20,
+        fontWeight: 'bold',
+    }
+});

@@ -6,6 +6,7 @@ import {
 } from 'react-navigation';
 
 import HomeScreen from './Project/screens/home';
+import OptionsScreen from './Project/screens/options';
 import SeasonInfo from './Project/screens/seasonInfo';
 import DetailsScreen from './Project/screens/details';
 
@@ -14,10 +15,13 @@ const AppNavigator = createStackNavigator(
     Home: {
       screen: HomeScreen,
     },
+    OptionsScreen: {
+      screen: OptionsScreen,
+    },
     SeasonInfo: {
       screen: SeasonInfo
     },
-    Details: {
+    DetailsScreen: {
       screen: DetailsScreen,
     }
   },

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 
 import Seasons from '../../components/Seasons/Index'
 import { SafeAreaView, ScrollView } from 'react-navigation';
@@ -18,13 +18,17 @@ export default class HomeScreen extends React.Component {
     }
 
     redirectTo(year) {
-        this.props.navigation.navigate('SeasonInfo', { year });
+        this.props.navigation.navigate('OptionsScreen', { year });
     }
 
     render() {
         return (
             <SafeAreaView style={styles.container}>
                 <ScrollView >
+                    <Text style={styles.headerFont}>
+                        From wich year you want information?
+                    </Text>
+
                     <Seasons handleClick={this.redirectTo} />
                     {/* HandleClick é uma variável que funciona como uma closure */}
                 </ScrollView>
@@ -41,4 +45,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    headerFont: {
+        fontSize: 20,
+        fontWeight: 'bold',
+    }
 });
