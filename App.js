@@ -8,7 +8,9 @@ import {
 import HomeScreen from './Project/screens/home';
 import OptionsScreen from './Project/screens/options';
 import SeasonInfo from './Project/screens/seasonInfo';
+import DriversScreen from './Project/screens/drivers';
 import DetailsScreen from './Project/screens/details';
+import DriverInfoScreen from './Project/screens/driverInfo';
 
 const AppNavigator = createStackNavigator(
   {//Screens
@@ -21,8 +23,14 @@ const AppNavigator = createStackNavigator(
     SeasonInfo: {
       screen: SeasonInfo
     },
+    DriversScreen: {
+      screen: DriversScreen
+    },
     DetailsScreen: {
       screen: DetailsScreen,
+    },
+    DriverInfoScreen: {
+      screen: DriverInfoScreen,
     }
   },
   {//Configurations

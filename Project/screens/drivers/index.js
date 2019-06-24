@@ -1,19 +1,17 @@
 import React from 'react';
-import { SafeAreaView, ScrollView } from 'react-navigation';
 import { Text, List, ListItem, Left, Right, Icon } from 'native-base';
+import { SafeAreaView, ScrollView } from 'react-navigation';
 import { StyleSheet } from 'react-native';
 
-import { debug } from 'util';
-
-export default class DetailScreen extends React.Component {
+export default class DriversScreen extends React.Component {
 
     state = {
-        races: [],
+        drivers: [],
     };
 
     static navigationOptions = () => {
         return {
-            title: 'Races List',
+            title: 'Driver List',
         }
     }
 
@@ -25,42 +23,43 @@ export default class DetailScreen extends React.Component {
 
     async fetchFrom(year) {
         try {
-            const response = await fetch(`http://ergast.com/api/f1/${year}.json`)
+            const response = await fetch(`http://ergast.com/api/f1/${year}/drivers.json`)
             const responseJson = await response.json()
 
-            const raceList = responseJson.MRData.RaceTable.Races
-            this.setState({ races: raceList })
+            const driversList = responseJson.MRData.DriverTable.Drivers
+
+            this.setState({ drivers: driversList })
 
         } catch{
             console.log('Deu ruim')
         }
     }
 
-    goToRaceDetails(race) {
-        console.log(race)
-        return "abreu"
+    goToDriverInfo(driver) {
+        this.props.navigation.navigate('DriverInfoScreen', { driverId: driver });
     }
 
-    renderRaceListItems() {
+    renderDriversList() {
 
-        let raceList = this.state.races;
+        let driversList = this.state.drivers;
         let listItems = [];
 
-        if (raceList.length == 0) {
+        if (driversList.length == 0) {
             let loadingNote = (<Text style={styles.headerFont}>
-                Carregando corridas...
+                Carregando pilotos...
             </Text>)
 
             return loadingNote
         }
 
-        for (let i = 0; i < (raceList.length) - 1; i++) {
+        for (let i = 0; i < (driversList.length) - 1; i++) {
 
             listItems.push(
-                <ListItem key={`race-${i}`} button onPress={() => { this.goToRaceDetails(raceList[i]) }}>
+                <ListItem key={`race-${i}`}
+                    button onPress={() => { this.goToDriverInfo(driversList[i]) }}>
                     <Left>
                         <Text>
-                            {raceList[i].raceName}
+                            {driversList[i].givenName} {driversList[i].familyName}
                         </Text>
                     </Left>
                     <Right>
@@ -70,7 +69,7 @@ export default class DetailScreen extends React.Component {
             )
         }
 
-        return listItems;
+        return listItems
     }
 
     render() {
@@ -79,7 +78,7 @@ export default class DetailScreen extends React.Component {
             <SafeAreaView>
                 <ScrollView>
                     <List>
-                        {this.renderRaceListItems()}
+                        {this.renderDriversList()}
                     </List>
                 </ScrollView>
             </SafeAreaView>
