@@ -11,6 +11,7 @@ import SeasonInfo from './Project/screens/seasonInfo';
 import DriversScreen from './Project/screens/drivers';
 import DetailsScreen from './Project/screens/details';
 import DriverInfoScreen from './Project/screens/driverInfo';
+import RaceInfoScreen from './Project/screens/raceInfo';
 
 const AppNavigator = createStackNavigator(
   {//Screens
@@ -31,6 +32,9 @@ const AppNavigator = createStackNavigator(
     },
     DriverInfoScreen: {
       screen: DriverInfoScreen,
+    },
+    RaceInfoScreen: {
+      screen: RaceInfoScreen,
     }
   },
   {//Configurations

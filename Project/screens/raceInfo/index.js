@@ -3,31 +3,31 @@ import { Container, Text } from 'native-base';
 import { StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 
-export default class DriverInfoScreen extends React.Component {
+export default class RaceInfoScreen extends React.Component {
 
     state = {
-        driverData: [],
-        driverSet: false
+        raceData: [],
+        raceSet: false
     };
 
     static navigationOptions = () => {
         return {
-            title: 'Driver Info',
+            title: 'Race Info',
         }
     }
 
     componentDidMount() {
-        const driverInfo = this.props.navigation.getParam('driverId');
+        const raceInfo = this.props.navigation.getParam('raceInfo');
 
         this.setState({
-            driverData: driverInfo,
-            driverSet: true
+            raceData: raceInfo,
+            raceSet: true
         })
     }
 
     render() {
 
-        if (!this.state.driverSet) {
+        if (!this.state.raceSet) {
             return (<SafeAreaView style={styles.container}>
                 <Text>
                     Carregando...
@@ -35,46 +35,38 @@ export default class DriverInfoScreen extends React.Component {
             </SafeAreaView>)
         }
 
-        let driver = this.state.driverData
+        let race = this.state.raceData
 
         return (
             <SafeAreaView style={styles.container}>
                 <Container />
                 <Container>
                     <Text style={styles.titleFont}>
-                        === Driver Info ===
+                        === Race Info ===
                 </Text>
                 </Container>
                 <Container>
                     <Text style={styles.titleFont}>
-                        Driver's Name:
+                        Race Name:
                 </Text>
                     <Text style={styles.infoFont}>
-                        {driver.givenName} {driver.familyName}
+                        {race.raceName}
                     </Text>
                 </Container>
                 <Container>
                     <Text style={styles.titleFont}>
-                        Driver's Code:
+                        Race Date:
                 </Text>
                     <Text style={styles.infoFont}>
-                        {driver.code}
+                        {race.date}
                     </Text>
                 </Container>
                 <Container>
                     <Text style={styles.titleFont}>
-                        Driver's BirthDay:
+                        Race Country:
                 </Text>
                     <Text style={styles.infoFont}>
-                        {driver.dateOfBirth}
-                    </Text>
-                </Container>
-                <Container>
-                    <Text style={styles.titleFont}>
-                        Driver's Nationality:
-                </Text>
-                    <Text style={styles.infoFont}>
-                        {driver.nationality}
+                        {race.Circuit.Location.country}
                     </Text>
                 </Container>
             </SafeAreaView>

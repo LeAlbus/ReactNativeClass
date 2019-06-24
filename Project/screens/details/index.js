@@ -3,8 +3,6 @@ import { SafeAreaView, ScrollView } from 'react-navigation';
 import { Text, List, ListItem, Left, Right, Icon } from 'native-base';
 import { StyleSheet } from 'react-native';
 
-import { debug } from 'util';
-
 export default class DetailScreen extends React.Component {
 
     state = {
@@ -37,8 +35,7 @@ export default class DetailScreen extends React.Component {
     }
 
     goToRaceDetails(race) {
-        console.log(race)
-        return "abreu"
+        this.props.navigation.navigate('RaceInfoScreen', { raceInfo: race });
     }
 
     renderRaceListItems() {
